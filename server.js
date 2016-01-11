@@ -8,8 +8,10 @@ const app = express();
 
 app.use(cors());
 
+const API_KEY = process.env.WALMART_LABS_API_KEY;
+
 app.get("/api/search/:query", (req, res) => {
-  request(`http://api.walmartlabs.com/v1/search?query=${req.params.query}&format=json&apiKey=API_KEY_GOES_HERE`)
+  request(`https://api.walmartlabs.com/v1/search?query=${req.params.query}&format=json&apiKey=${API_KEY}`)
   .then((data) => res.json(JSON.parse(data)));
 });
 
